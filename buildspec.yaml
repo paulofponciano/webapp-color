@@ -12,8 +12,8 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t $REPOSITORY_URI:$COMMIT_SHA .
-      - docker tag $REPOSITORY_URI:$COMMIT_SHA
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest
   post_build:
     commands:
       - echo Build completed on `date`
