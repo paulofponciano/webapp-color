@@ -6,7 +6,7 @@ phases:
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $REPOSITORY_URI
       - echo Getting the Git commit SHA...
-      - COMMIT_SHA=$(git rev-parse --short HEAD)
+      - COMMIT_SHA=$CODEBUILD_RESOLVED_SOURCE_VERSION
       - echo "Commit SHA is $COMMIT_SHA"
   build:
     commands:
