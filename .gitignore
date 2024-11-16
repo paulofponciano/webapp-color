@@ -1,2 +1,6 @@
+# Other
+.DS_Store
+cred.txt
+/.env
 venv
 .idea
