@@ -19,6 +19,3 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push 310240692520.dkr.ecr.us-east-2.amazonaws.com/myproject-staging-app:$IMAGE_SHA
-
-artifacts:
-  files: imagedefinitions.json
