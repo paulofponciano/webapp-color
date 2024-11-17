@@ -1,5 +1,12 @@
 version: 0.2
 
+env:
+  variables:
+    AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+    IMAGE_REPO_NAME: $IMAGE_REPO_NAME
+    AWS_ACCOUNT_ID: $AWS_ACCOUNT_ID
+    COMMIT_SHA: $CODEBUILD_RESOLVED_SOURCE_VERSION
+
 phases:
   pre_build:
     commands:
