@@ -5,17 +5,15 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 310240692520.dkr.ecr.us-east-2.amazonaws.com
-      - echo Getting the Git commit SHA...
-      - COMMIT_SHA=$CODEBUILD_RESOLVED_SOURCE_VERSION
-      - echo "Commit SHA is $COMMIT_SHA"
+
   build:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t myproject-staging-app:$COMMIT_SHA .
-      - docker tag myproject-staging-app:$IMAGE_SHA 310240692520.dkr.ecr.us-east-2.amazonaws.com/myproject-staging-app:$IMAGE_SHA
+      - docker build -t myproject-staging-app:latest .
+      - docker tag myproject-staging-app:latest 310240692520.dkr.ecr.us-east-2.amazonaws.com/myproject-staging-app:latest
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push 310240692520.dkr.ecr.us-east-2.amazonaws.com/myproject-staging-app:$IMAGE_SHA
+      - docker push 310240692520.dkr.ecr.us-east-2.amazonaws.com/myproject-staging-app:latest
