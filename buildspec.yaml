@@ -1,16 +1,10 @@
 version: 0.2
 
-env:
-  variables:
-    AWS_DEFAULT_REGION: "us-east-2"
-    IMAGE_REPO_NAME: "myproject-staging-app"
-    AWS_ACCOUNT_ID: "310240692520"
-
 phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 310240692520.dkr.ecr.us-east-2.amazonaws.com
       - echo Getting the Git commit SHA...
       - COMMIT_SHA=$CODEBUILD_RESOLVED_SOURCE_VERSION
       - echo "Commit SHA is $COMMIT_SHA"
@@ -18,10 +12,13 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t $IMAGE_REPO_NAME:$COMMIT_SHA .
-      - docker tag $IMAGE_REPO_NAME:$IMAGE_SHA $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_SHA
+      - docker build -t myproject-staging-app:$COMMIT_SHA .
+      - docker tag myproject-staging-app:$IMAGE_SHA 310240692520.dkr.ecr.us-east-2.amazonaws.com/myproject-staging-app:$IMAGE_SHA
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_SHA
+      - docker push 310240692520.dkr.ecr.us-east-2.amazonaws.com/myproject-staging-app:$IMAGE_SHA
+
+artifacts:
+  files: imagedefinitions.json
