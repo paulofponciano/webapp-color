@@ -25,7 +25,7 @@ phases:
       - printf '[{"name":"app-container","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
   files:
-    - "imagedefinitions.json"
-  name: imagedefinitions.json
-  base-directory: "."
+    - imagedefinitions.json
+  base-directory: .
+  name: build_outp
   discard-paths: yes
