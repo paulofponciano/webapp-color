@@ -6,7 +6,7 @@
         "logConfiguration": { 
             "logDriver": "awslogs",
             "options": { 
-              "awslogs-group" : "/ecs/<ENV_PREFIX>/ENVIRONMENT/task",
+              "awslogs-group" : "/ecs/<ENV_PREFIX>/<ENVIRONMENT>/task",
               "awslogs-region": "<AWS_DEFAULT_REGION>",
               "awslogs-stream-prefix": "ecs"
             }
