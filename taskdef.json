@@ -21,7 +21,7 @@
   ],
   "cpu": "<TASK_CPU>",
   "executionRoleArn": "arn:aws:iam::<AWS_ACCOUNT_ID>:role/<ENV_PREFIX>-task-execution-role-<ENVIRONMENT>",
-  "family": "fargate-task-definition",
+  "family": "<ENV_PREFIX>-<ENVIRONMENT>",
   "memory": "<TASK_MEMORY>",
   "networkMode": "awsvpc",
   "mountPoints": [
