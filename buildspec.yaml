@@ -27,7 +27,7 @@ phases:
       - sed -i 's/<ENV_PREFIX>/'$ENV_PREFIX'/g' taskdef.json
       - sed -i 's/<ENVIRONMENT>/'$ENVIRONMENT'/g' taskdef.json
       - sed -i 's/<TASK_MEMORY>/'$TASK_MEMORY'/g' taskdef.json
-      - sed -i 's/<CONTAINER_PORT>/'$CONTAINER_PORT'/g' taskdef.json
+      - sed -i 's/<CONTAINER_PORT>/'$CONTAINER_PORT'/g' appspec.yaml taskdef.json
       - sed -i '/"awslogs-region":/ s/<AWS_DEFAULT_REGION>/'"$AWS_DEFAULT_REGION"'/g' taskdef.json
       - sed -i 's/<IMAGE_NAME>/'$AWS_ACCOUNT_ID'\.dkr\.ecr\.'$AWS_DEFAULT_REGION'\.amazonaws.com\/'$IMAGE_REPO_NAME'\:'$IMAGE_TAG'/g' taskdef.json
 artifacts:
