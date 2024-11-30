@@ -14,7 +14,7 @@
         "name": "<APP_NAME>",
         "portMappings": [ 
             { 
-              "containerPort": 8080
+              "containerPort": "<CONTAINER_PORT>"
             }
         ]
       }
